@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:5000/api`;
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
 const token = localStorage.getItem('access');
@@ -7,7 +7,7 @@ const token = localStorage.getItem('access');
 
 
 const getAllExpenses = async () => {
-    const response = await fetch(`${baseUrl}/list`, {
+    const response = await fetch(`${baseUrl}/api/list`, {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -25,7 +25,7 @@ const getAllExpenses = async () => {
 
 
 const addExpense = async (expenseData) => {
-    const response = await fetch(`${baseUrl}/add`, {
+    const response = await fetch(`${baseUrl}/api/add`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -47,7 +47,7 @@ const addExpense = async (expenseData) => {
 
 
 const updateExpense = async (id, expenseData) => {
-    const response = await fetch(`${baseUrl}/update/${id}`, {
+    const response = await fetch(`${baseUrl}/api/update/${id}`, {
         method: "PATCH",
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -69,7 +69,7 @@ const updateExpense = async (id, expenseData) => {
 
 
 const deleteExpense = async (id) => {
-    const response = await fetch(`${baseUrl}/delete/${id}`, {
+    const response = await fetch(`${baseUrl}/api/delete/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -89,7 +89,7 @@ const deleteExpense = async (id) => {
 
 
 const setBudget = async (amount) => {
-    const response = await fetch(`${baseUrl}/budget`, {
+    const response = await fetch(`${baseUrl}/api/budget`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -109,7 +109,7 @@ const setBudget = async (amount) => {
 }
 
 const getMonthlySummary = async () => {
-    const response = await fetch(`${baseUrl}/get-monthly-summary`, {
+    const response = await fetch(`${baseUrl}/api/get-monthly-summary`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -127,7 +127,7 @@ const getMonthlySummary = async () => {
 }
 
 const exportExpenseData = async (range) => {
-    const response = await fetch(`${baseUrl}//export-monthly-data`, {
+    const response = await fetch(`${baseUrl}/api/export-monthly-data`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -147,7 +147,7 @@ const exportExpenseData = async (range) => {
 }
 
 const getDashboardSummary = async (range) => {
-    const response = await fetch(`${baseUrl}/get-dashboard-summary`, {
+    const response = await fetch(`${baseUrl}/api/get-dashboard-summary`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

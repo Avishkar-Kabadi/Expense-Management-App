@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
+  FaArrowCircleLeft,
+  FaBackward,
   FaCalendar,
   FaChevronDown,
   FaDownload,
@@ -12,6 +15,7 @@ import { expenseService } from "../../services/expenseService";
 import "./expenses.css";
 
 export default function Expenses() {
+  const navigate = useNavigate();
   const [expenses, setExpenses] = useState([]);
   const [filteredExpenses, setFilteredExpenses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -179,7 +183,16 @@ export default function Expenses() {
     <div className="all_expenses_page">
       <div className="expenses_header">
         <div className="header_left">
-          <h1>All Expenses</h1>
+          <div className="back-button">
+            <FaArrowCircleLeft
+              size={24}
+              color="#333"
+              onClick={() => navigate("/dashboard")}
+            />
+
+            <h1>All Expenses</h1>
+          </div>
+
           <div className="expenses_summary">
             <span className="total_count">
               {filteredExpenses.length} expenses

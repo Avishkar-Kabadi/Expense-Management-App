@@ -1,10 +1,11 @@
 
-const baseUrl = `http://localhost:5000/auth`;
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 
 
 const registerUser = async (userData) => {
 
-    const response = await fetch(`${baseUrl}/register`, {
+    const response = await fetch(`${baseUrl}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -26,7 +27,7 @@ const registerUser = async (userData) => {
 
 const loginUser = async (useData) => {
 
-    const response = await fetch(`${baseUrl}/login`, {
+    const response = await fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(useData),
@@ -46,7 +47,7 @@ const token = localStorage.getItem('access');
 
 
 const getUser = async () => {
-    const response = await fetch(`${baseUrl}/user`, {
+    const response = await fetch(`${baseUrl}/auth/user`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -68,7 +69,7 @@ const getUser = async () => {
 
 const updateUser = async (userData) => {
 
-    const response = await fetch(`${baseUrl}/update-user`, {
+    const response = await fetch(`${baseUrl}/auth/update-user`, {
         method: 'PATCH',
         body: JSON.stringify(userData),
         headers: {

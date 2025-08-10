@@ -298,6 +298,13 @@
   background: #87ceeb;
 }
 
+.back-button {
+  display: flex;
+  justify-content: space-between; /* icon+title on left, summary on right */
+  align-items: center;
+  gap: 1rem;
+}
+
 .radio_label input[type="radio"]:checked + .radio_custom::after {
   content: "";
   position: absolute;
