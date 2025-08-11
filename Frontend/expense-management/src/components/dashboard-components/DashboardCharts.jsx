@@ -29,7 +29,9 @@ export default function DashboardCharts({
             >
               <div className="budget_center">
                 <span className="budget_percentage">
-                  {budgetPercentage?.toFixed(1)}%
+                  {budgetPercentage && budgetPercentage > 0
+                    ? `${budgetPercentage.toFixed(1)} %`
+                    : "0 %"}
                 </span>
                 <span className="budget_text">Used</span>
               </div>

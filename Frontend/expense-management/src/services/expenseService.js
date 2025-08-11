@@ -16,7 +16,7 @@ const getAllExpenses = async () => {
     })
     const data = await response.json();
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "failed to fetch Expenses")
     }
 
@@ -38,7 +38,7 @@ const addExpense = async (expenseData) => {
     const data = await response.json();
 
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "Failed to add expense");
     }
 
@@ -59,7 +59,7 @@ const updateExpense = async (id, expenseData) => {
 
     const data = await response.json();
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "Failed to update expense");
 
     }
@@ -80,7 +80,7 @@ const deleteExpense = async (id) => {
     const data = await response.json();
 
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "Failed to delete expense");
     }
 
@@ -101,7 +101,7 @@ const setBudget = async (amount) => {
 
     const data = await response.json();
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "failed to set budget");
     }
 
@@ -120,7 +120,7 @@ const getMonthlySummary = async () => {
 
     const data = await response.json();
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "Failed to fetch monthly expense data");
     }
     return data;
@@ -139,7 +139,7 @@ const exportExpenseData = async (range) => {
 
     const data = await response.json();
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "Failed to export expense data");
     };
 
@@ -160,7 +160,7 @@ const getDashboardSummary = async (range) => {
     const data = await response.json();
 
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "failed to fetch dashboard data");
     }
 

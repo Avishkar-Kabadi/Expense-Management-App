@@ -29,23 +29,29 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
   const [expenses, setExpenses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setMonthlyBudget(localStorage.getItem("budget"));
-    getRecentExpense();
-    getMonthlyBudgetAndExpense();
-    getUserDetails();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setMonthlyBudget(localStorage.getItem("budget"));
+      getRecentExpense();
+      getMonthlyBudgetAndExpense();
+      getUserDetails();
+    }, 1200);
+
+    return () => clearTimeout(timer);
   }, [setExpenses, setMonthlyBudget, setTotalExpenses]);
 
   const getUserDetails = async () => {
     try {
       const res = await authService.getUser();
-      console.log(res.userData);
+      // console.log(res.userData);
       setUser(res.userData);
       if (res) {
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -141,6 +147,18 @@ export default function Dashboard() {
     setMonthlyBudget(newBudget);
     setShowBudgetModal(false);
   };
+  if (isLoading) {
+    return (
+      <div className="dashboard_loader_container">
+        <div className="dashboard_loader_spinner">
+          <div className="dashboard_loader_dot"></div>
+          <div className="dashboard_loader_dot"></div>
+          <div className="dashboard_loader_dot"></div>
+        </div>
+        <h2 className="dashboard_loader_text">Loading Dashboard...</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="dashboard">

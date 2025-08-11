@@ -103,7 +103,7 @@ export default function Expenses() {
         downloadCSV(csvContent, `expenses_${Date.now()}.csv`);
         setExporting(false);
       }, 1000);
-      console.log("Exporting with filters:", filterParams);
+      // console.log("Exporting with filters:", filterParams);
     } catch (error) {
       console.error("Error exporting data:", error);
       setExporting(false);
@@ -170,11 +170,13 @@ export default function Expenses() {
 
   if (loading) {
     return (
-      <div className="all_expenses_page">
-        <div className="loading_container">
-          <div className="loading_spinner"></div>
-          <p>Loading expenses...</p>
+      <div className="dashboard_loader_container">
+        <div className="dashboard_loader_spinner">
+          <div className="dashboard_loader_dot"></div>
+          <div className="dashboard_loader_dot"></div>
+          <div className="dashboard_loader_dot"></div>
         </div>
+        <h2 className="dashboard_loader_text">Loading All Expenses...</h2>
       </div>
     );
   }

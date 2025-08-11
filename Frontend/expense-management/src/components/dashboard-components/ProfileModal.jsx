@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { authService } from "../../services/authService";
 export default function ProfileModal({ onClose, userData, onSave }) {
   const [profileData, setProfileData] = useState(userData);
-  console.log(userData);
+  // console.log(userData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -14,7 +14,7 @@ const registerUser = async (userData) => {
 
     const data = await response.json();
     if (!response.ok) {
-        console.log();
+        // console.log();
 
         throw new Error(data.message || "Login failed");
     }
@@ -59,7 +59,7 @@ const getUser = async () => {
     const data = await response.json();
 
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "failed to fetch user details");
     }
     return data;
@@ -82,7 +82,7 @@ const updateUser = async (userData) => {
     const data = await response.json();
 
     if (!response.ok) {
-        console.log(data.message);
+        // console.log(data.message);
         throw new Error(data.message || "Failed to update user");
     }
     return data;
