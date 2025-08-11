@@ -38,7 +38,7 @@ export default function Dashboard() {
       getRecentExpense();
       getMonthlyBudgetAndExpense();
       getUserDetails();
-    }, 1200);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [setExpenses, setMonthlyBudget, setTotalExpenses]);
